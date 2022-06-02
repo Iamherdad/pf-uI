@@ -3,7 +3,11 @@ import Button, { BtnType, BtnSize } from "./components/Button";
 import Menu from "./components/Menu/Menu";
 import MenuItem from "./components/Menu/MenuItem";
 import SubMenu from "./components/Menu/SubMenu";
+import Alert from "./components/Alert";
 function App() {
+  const close = () => {
+    console.log(6666);
+  };
   return (
     <div className="App">
       <Button
@@ -32,7 +36,6 @@ function App() {
         baidu
       </Button>
       <Button shape="round">round</Button>
-
       <Button shape="round">circle</Button>
       <hr />
       <Menu
@@ -51,6 +54,27 @@ function App() {
           <MenuItem>submenu2</MenuItem>
         </SubMenu>
       </Menu>
+      <hr />
+      <Alert
+        message="alert"
+        description="Success Description Success Description Success Description"
+        closable
+        onClose={close}
+      />
+      <Alert
+        message="success"
+        type="success"
+        description="Success Description Success Description Success Description"
+        closable
+        onClose={close}
+      />
+      <Alert
+        message="warning"
+        type="warning"
+        description="Success Description Success Description Success Description"
+        closable
+      />
+      <Alert message="error" type="error" closable />
     </div>
   );
 }

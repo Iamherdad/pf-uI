@@ -1,0 +1,60 @@
+.pf-alert {
+  box-sizing: border-box;
+  margin: 0;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  word-wrap: break-word;
+  border-radius: 2px;
+
+  &.alert-info,
+  &.alert-success,
+  &.alert-warning,
+  &.alert-error {
+    // display: block;
+  }
+  &.alert-info {
+    background-color: #e6f7ff !important;
+    border: 1px solid #91d5ff !important;
+  }
+  &.alert-success {
+    background-color: #f6ffed !important;
+    border: 1px solid #b7eb8f !important;
+  }
+  &.alert-warning {
+    background-color: #fffbe6 !important;
+    border: 1px solid #ffe58f !important;
+  }
+  &.alert-error {
+    background-color: #fff2f0 !important;
+    border: 1px solid #ffccc7 !important;
+  }
+  .alert-description {
+    word-wrap: break-word;
+  }
+
+  .alert-content {
+  }
+
+  .alert-closable {
+    margin: 0;
+    padding: 0;
+    border: 1px solid transparent; //自定义边框
+    outline: none;
+    background-color: transparent;
+    position: absolute;
+    top: 5%;
+    right: 1%;
+    & svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

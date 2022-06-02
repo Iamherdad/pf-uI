@@ -7,9 +7,6 @@
 //mixin
 @import "mixin";
 
-// animation
-@import "animation";
-
 //buttom样式
 @import "../components/Button/style"; // @import "../components/Button/style";
 
@@ -17,7 +14,8 @@
 
 @import "../components/Menu/style";
 
-// // icon
+//aleart
+@import "../components//Alert/style"; // // icon
 // @import "../components/Icon/style";
 
 // //input
