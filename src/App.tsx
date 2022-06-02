@@ -1,9 +1,13 @@
 import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import Button, { BtnType, BtnSize } from "./components/Button";
 import Menu from "./components/Menu/Menu";
 import MenuItem from "./components/Menu/MenuItem";
 import SubMenu from "./components/Menu/SubMenu";
 import Alert from "./components/Alert";
+import Icon from "./components/Icon";
+library.add(fas);
 function App() {
   const close = () => {
     console.log(6666);
@@ -23,7 +27,7 @@ function App() {
       </Button>
       <Button btnType={BtnType.ghost}>ghost</Button>
       <Button btnType={BtnType.text}>text</Button>
-      <Button btnType={BtnType.danger} size={BtnSize.large}>
+      <Button btnType={BtnType.dashed} size={BtnSize.large}>
         dashed
       </Button>
       <Button>default</Button>
@@ -41,14 +45,14 @@ function App() {
       <Menu
         className="parent"
         onSelect={(index) => console.log(index)}
-        mode="vertical"
+        mode="horizontal"
         defaultIndex={"2"}
         defaultOpenSubMenu={["4"]}
       >
-        <MenuItem>54345</MenuItem>
-        <MenuItem className="children">543</MenuItem>
-        <MenuItem>453</MenuItem>
-        <MenuItem disabled>453</MenuItem>
+        <MenuItem>0</MenuItem>
+        <MenuItem className="children">1</MenuItem>
+        <MenuItem>2</MenuItem>
+        <MenuItem disabled>3</MenuItem>
         <SubMenu title="submenu">
           <MenuItem>submenu1</MenuItem>
           <MenuItem>submenu2</MenuItem>
@@ -75,6 +79,10 @@ function App() {
         closable
       />
       <Alert message="error" type="error" closable />
+
+      <hr />
+      <Icon icon="arrow-down" size="10x" theme="primary" />
+      <Icon icon="9" size="10x" theme="warning" />
     </div>
   );
 }
