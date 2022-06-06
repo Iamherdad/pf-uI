@@ -4,37 +4,42 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button, { BtnSize, BtnType } from "../components/Button/index";
 import "../styles/index.scss";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Example/Button",
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 } as ComponentMeta<typeof Button>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  btnType: BtnType.primary,
-};
-
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: "Button",
-// };
-
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: "large",
-//   label: "Button",
-// };
-
-export const Small = Template.bind({});
-Small.args = {
-  size: BtnSize.large,
-};
+export const 不同类型的Button: ComponentStory<typeof Button> = () => (
+  <>
+    <Button btnType={BtnType.primary}>primary</Button>
+    <Button btnType={BtnType.danger}>danger</Button>
+    <Button btnType={BtnType.dashed}>dashed</Button>
+    <Button btnType={BtnType.default}>default</Button>
+    <Button btnType={BtnType.ghost}>ghost</Button>
+    <Button
+      btnType={BtnType.link}
+      href="https://storybook.js.org/"
+      target="_blank"
+    >
+      link
+    </Button>
+    <Button btnType={BtnType.text}>text</Button>
+  </>
+);
+export const 不同尺寸的Button: ComponentStory<typeof Button> = () => (
+  <>
+    <Button size={BtnSize.small}>Size</Button>
+    <Button size={BtnSize.large}>Size</Button>
+    <Button btnType={BtnType.primary} size={BtnSize.small}>
+      primary
+    </Button>
+    <Button btnType={BtnType.primary} size={BtnSize.large}>
+      primary
+    </Button>
+  </>
+);
+export const 禁用的Button: ComponentStory<typeof Button> = () => (
+  <>
+    <Button disable>Size</Button>
+  </>
+);
