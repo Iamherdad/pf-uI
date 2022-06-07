@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import Button, { BtnType, BtnSize } from "./components/Button";
@@ -7,10 +7,27 @@ import MenuItem from "./components/Menu/MenuItem";
 import SubMenu from "./components/Menu/SubMenu";
 import Alert from "./components/Alert";
 import Icon from "./components/Icon";
+import Input from "./components/Input/Input";
+import AutoComplete from "./components/AutoComplete/AutoComplete";
+
 library.add(fas);
 function App() {
   const close = () => {
     console.log(6666);
+  };
+  const getIptVal = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    console.log(123);
+  };
+  const list = ["lilei", "xiaoming", "zahngsan", "wangwu"];
+  const handleFeach = (str: string) => {
+    return list.filter((item) => item.includes(str));
+  };
+  const select = (item: any) => {
+    console.log(item);
+  };
+  const renderOption = (option: string) => {
+    return <h1>name:{option}</h1>;
   };
   return (
     <div className="App">
@@ -83,6 +100,31 @@ function App() {
       <hr />
       <Icon icon="arrow-down" size="10x" theme="primary" />
       <Icon icon="9" size="10x" theme="warning" />
+
+      <hr />
+      <div style={{ width: "300px" }}>
+        <Input
+          placeholder="默认的"
+          defaultValue="123456"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => getIptVal(e)}
+        />
+        <Input placeholder="禁用的" disabled />
+        <Input placeholder="带图标的" icon="search" />
+        <Input
+          placeholder="带前缀的"
+          prepand={<Icon icon="9" theme="warning" />}
+        />
+        <Input placeholder="带后缀的" append=".com" />
+        <Input placeholder="带前后缀的" prepand="http" append=".com" />
+      </div>
+      <hr />
+      <AutoComplete
+        fetchSuggestions={handleFeach}
+        onSelect={select}
+        renderOption={renderOption}
+      ></AutoComplete>
+      <hr />
+      <div style={{ height: "500px" }}></div>
     </div>
   );
 }

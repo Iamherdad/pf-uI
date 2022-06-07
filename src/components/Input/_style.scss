@@ -1,0 +1,39 @@
+.pf-ipt-container {
+  position: relative;
+  display: flex;
+  .pf-prepand,
+  .pf-append {
+    height: 100%;
+    padding: 5px;
+    background-color: #e9ecef;
+  }
+  .pf-ipt {
+    -web-kit-appearance: none;
+    -moz-appearance: none;
+    font-size: 14px;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    border-radius: 4px;
+    border: 1px solid #c8cccf;
+    color: #6a6f77;
+    outline: 0;
+
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    transition: all 0.3s;
+    padding: 4px 11px;
+    &:focus {
+      border: 1px solid $primary;
+      //   color: red;
+    }
+  }
+  .pf-ipt-icon {
+    position: absolute;
+    right: 0;
+    transform: translate(-50%, 50%);
+  }
+}
