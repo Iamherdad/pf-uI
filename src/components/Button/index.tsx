@@ -1,19 +1,19 @@
 import React from "react";
 import classNames from "classnames";
 
-enum BtnType {
-  primary = "primary",
-  ghost = "ghost",
-  link = "link",
-  text = "text",
-  dashed = "dashed",
-  default = "default",
-  danger = "danger",
-}
-enum BtnSize {
-  large = "large",
-  small = "small",
-}
+type BtnType =
+  | "primary"
+  | "ghost"
+  | "link"
+  | "text"
+  | "dashed"
+  | "default"
+  | "danger";
+
+type BtnSize =
+  "large"|
+  "small"
+
 
 type BtnShape = "round";
 
@@ -47,7 +47,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     [`pf-btn-${btnType}`]: btnType,
     [`pf-btn-${size}`]: size,
     [`pf-btn-${shape}`]: shape,
-    disable: btnType === BtnType.link && disable,
+    disable: btnType === "link" && disable,
   });
 
   if (btnType === "link" && href) {
@@ -65,4 +65,4 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 };
 export default Button;
-export { BtnType, BtnSize };
+// export { BtnType, BtnSize };
