@@ -2,6 +2,7 @@ import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Button from "../Button";
 import UpLoadList from "./UploadList";
+import Dragger from "./Dragger";
 export type UploadFile = {
   uid: string;
   size: number;
@@ -19,8 +20,16 @@ type UploadProps = {
   onsuccess?: (data: any, file: File) => void;
   onError?: (err: any, file: File) => void;
   onChange?: (file: File) => void;
-  defaultFileList?: UploadFile[];
+  // defaultFileList?: UploadFile[];
   onRemove?: (file: UploadFile) => void;
+  headers?: { [key: string]: any };
+  name?: string;
+  data?: { [key: string]: any };
+  withCredentials?: boolean;
+  accept?: string;
+  multiple?: boolean;
+  drag?: boolean;
+  Children?: any;
 };
 const Upload: FC<UploadProps> = (props) => {
   const {
@@ -31,34 +40,19 @@ const Upload: FC<UploadProps> = (props) => {
     beforeUpload,
     onChange,
     onRemove,
-    defaultFileList,
+    // defaultFileList,
+    headers,
+    name = "file",
+    data,
+    withCredentials,
+    accept,
+    multiple,
+    drag,
+    Children = "点击上传",
   } = props;
-  const defaultVal: UploadFile[] = [
-    { uid: "123", size: 123, name: "hellos", status: "ready", percent: 30 },
-    {
-      uid: "1234",
-      size: 1234,
-      name: "helloss",
-      status: "success",
-      percent: 30,
-    },
-    {
-      uid: "12345",
-      size: 1234,
-      name: "error",
-      status: "error",
-      percent: 30,
-    },
-    {
-      uid: "123456",
-      size: 1234,
-      name: "hellossss",
-      status: "Uploading",
-      percent: 30,
-    },
-  ];
+
   const fileIptRef = useRef<HTMLInputElement>(null);
-  const [fileList, setFileList] = useState<UploadFile[]>(defaultVal || []);
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
   const updateFileList = (
     updateFile: UploadFile,
     updateObj: Partial<UploadFile>
@@ -114,14 +108,24 @@ const Upload: FC<UploadProps> = (props) => {
       percent: 0,
       raw: file,
     };
-    setFileList([_file, ...fileList]);
+    // setFileList([_file, ...fileList]);
+    setFileList((pri) => {
+      return [_file, ...pri];
+    });
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append(name || "file", file);
+    if (data) {
+      Object.keys(data).forEach((item) => {
+        formData.append(item, data[item]);
+      });
+    }
     axios
       .post(action, formData, {
         headers: {
+          ...headers,
           "Content-Type": "mutipart/form-data",
         },
+        withCredentials,
         onUploadProgress: (e) => {
           console.log(e);
 
@@ -165,15 +169,27 @@ const Upload: FC<UploadProps> = (props) => {
   };
   return (
     <div className="pf-upload">
-      <Button btnType="primary" onClick={handleClick}>
-        点击上传
-      </Button>
+      <div onClick={handleClick}>
+        {drag ? (
+          <Dragger
+            onFile={(files) => {
+              uploadFiles(files);
+            }}
+          >
+            {Children}
+          </Dragger>
+        ) : (
+          Children
+        )}
+      </div>
       <input
         type="file"
         className="pf-ipt-file"
         style={{ display: "none" }}
         ref={fileIptRef}
         onChange={handleFileChange}
+        multiple={multiple}
+        accept={accept}
       />
       <UpLoadList fileList={fileList} onRemove={handleRemove}></UpLoadList>
     </div>

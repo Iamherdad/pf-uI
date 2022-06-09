@@ -10,6 +10,7 @@ import Icon from "./components/Icon";
 import Input from "./components/Input/Input";
 import AutoComplete from "./components/AutoComplete/AutoComplete";
 import Upload from "./components/Upload/index";
+import Progress from "./components/Progress/index";
 library.add(fas);
 function App() {
   const close = () => {
@@ -47,7 +48,7 @@ function App() {
   };
   return (
     <div className="App">
-      {/* <Button
+      <Button
         btnType="primary"
         size="large"
         className="555"
@@ -136,14 +137,20 @@ function App() {
         renderOption={renderOption}
       ></AutoComplete>
       <hr />
-      <div style={{ height: "500px" }}></div> */}
+      <div style={{ height: "50px" }}></div>
       <Upload
         action="https://jsonplaceholder.typicode.com/posts"
         onProgress={onProgress}
         beforeUpload={beforeUpload}
         onChange={uploadChange}
         onsuccess={onSuccess}
+        name="lpf"
+        headers={{ type: "hahaa" }}
+        multiple
+        drag={true}
       ></Upload>
+      <hr />
+      <Progress percent={50} />
     </div>
   );
 }
