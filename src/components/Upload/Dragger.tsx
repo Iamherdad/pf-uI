@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { DragEvent, FC, useState } from "react";
 
-type DraggerProps = {
+export type DraggerProps = {
   onFile: (file: FileList) => void;
   children?: any;
 };

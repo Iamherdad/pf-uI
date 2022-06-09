@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, FC, useRef, useState } from "react";
 import axios from "axios";
-import Button from "../Button";
+
 import UpLoadList from "./UploadList";
 import Dragger from "./Dragger";
 export type UploadFile = {
@@ -13,7 +13,7 @@ export type UploadFile = {
   response?: any;
   error?: any;
 };
-type UploadProps = {
+export type UploadProps = {
   action: string;
   beforeUpload?: (file: File) => boolean | Promise<File>;
   onProgress?: (percentage: number, file: File) => void;
@@ -127,8 +127,6 @@ const Upload: FC<UploadProps> = (props) => {
         },
         withCredentials,
         onUploadProgress: (e) => {
-          console.log(e);
-
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
 
           if (percentage < 100) {

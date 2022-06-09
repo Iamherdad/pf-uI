@@ -5,9 +5,8 @@ import React, {
   ReactElement,
   KeyboardEvent,
   useRef,
-  useEffect,
 } from "react";
-import Input, { InputProps } from "../Input/Input";
+import Input, { InputProps } from "../Input";
 import classNames from "classnames";
 import useClickOutside from "../../hooks/useClickOutside";
 

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { UploadFile } from "./index";
+import { UploadFile } from "./Upload";
 import Icon from "../Icon/index";
 import Progress from "../Progress/index";
-type UploadListProps = {
+export type UploadListProps = {
   fileList: UploadFile[];
   onRemove: (_file: UploadFile) => void;
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useDebounce(fun: any, time = 300) {
   const [debounceVal, setDebounceVal] = useState(fun);

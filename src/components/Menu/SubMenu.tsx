@@ -4,7 +4,7 @@ import { MenuContext } from "./Menu";
 import { MenuItemProps } from "./MenuItem";
 import Icon from "../Icon";
 
-interface SubMenuProps {
+export interface SubMenuProps {
   index?: string;
   title?: string;
   className?: string;
