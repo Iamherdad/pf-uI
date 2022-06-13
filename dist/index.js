@@ -8,6 +8,6 @@ export { default as AutoComplete } from "./components/AutoComplete";
 export { default as Icon } from "./components/Icon";
 export { default as Input } from "./components/Input";
 export { default as Progress } from "./components/Progress";
-export { default as InUploadput } from "./components/Upload/Upload";
+export { default as Upload } from "./components/Upload/Upload";
 export { default as UploadList } from "./components/Upload/UploadList";
 export { default as Dragger } from "./components/Upload/Dragger";
